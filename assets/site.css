@@ -89,12 +89,14 @@
     align-items: center;
     height: 139px;
     background: #fff;
-    padding: 0 min(80px, 4vw) 0 min(164px, 8vw);
+    padding: 0 min(164px, 8vw);   /* equal space both sides */
     z-index: 10;
   }
 
   .logo img {
-    height: 60px;
+    /* fluid: tracks the window so the gap to the nav stays steady
+       (67px at the 1728px design width, shrinking smoothly) */
+    height: clamp(34px, 3.9vw, 67px);
     width: auto;
     display: block;
   }
@@ -446,7 +448,6 @@
   /* compress the header on smaller windows (design is 1728px wide) */
   @media (max-width: 1440px) {
     .site-header { padding: 0 24px; }
-    .logo img { height: 44px; }
     .main-nav { gap: 0; }
     .nav-link { padding: 0 11px; font-size: 12px; }
     .search-btn { margin: 0 14px 0 8px; }
