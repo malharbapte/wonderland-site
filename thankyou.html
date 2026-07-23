@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You — Wonderland RV</title>
+<link rel="stylesheet" href="assets/site.css">
+<!-- Handwritten accent fonts for the Gallery tiles.
+     "Felipa" matches the Figma design; "Caveat" stands in for "Figma Hand"
+     (which only exists inside Figma). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Felipa&display=swap" rel="stylesheet">
+<style>
+  /* ============ THANK YOU PAGE ============ */
+
+  :root {
+    --review-bg:  #dca18e;
+    --gallery-bg: #8a5241;
+    --tile-peach: #ffdcbb;
+    --tile-pink:  #ffaeae;
+  }
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 38px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #000;
+  }
+
+  .content-pad { padding-left: min(179px, 10vw); padding-right: min(179px, 10vw); }
+
+  /* --- Hero --- */
+
+  .hero .image-label {
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Inter", var(--font-body);
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: #fff;
+  }
+
+  .hero-copy .hero-sub {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #fff;
+    max-width: 590px;
+  }
+
+  .hero-copy h1 { max-width: 520px; }
+
+  /* --- Reviews --- */
+
+  .reviews { padding-top: 90px; }
+  .reviews .section-heading { margin-bottom: 44px; }
+
+  .review-band {
+    position: relative;
+    height: 432px;
+    background: var(--review-bg);
+  }
+
+  .review-band .review-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 13.2%;
+    width: 27.3%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter", var(--font-body);
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: #000;
+  }
+
+  .review-quote {
+    position: absolute;
+    left: 53.5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 458px;
+    max-width: 40%;
+    color: #fff;
+  }
+
+  .review-quote .qmark {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 128px;
+    line-height: 0.4;
+    display: block;
+    margin-bottom: 18px;
+  }
+
+  .review-quote blockquote {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 24px;
+    margin-bottom: 44px;
+  }
+
+  .review-quote .review-name {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
+    text-align: right;
+  }
+
+  .review-quote .review-role {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: right;
+  }
+
+  .review-band .chevron {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 55px;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+  .review-band .chevron img { width: 100%; height: 100%; display: block; }
+  .review-band .chevron.prev { left: min(179px, 6vw); transform: translateY(-50%) rotate(180deg); }
+  .review-band .chevron.next { right: min(179px, 6vw); }
+
+  /* --- Featured media --- */
+
+  .featured { padding-top: 96px; padding-bottom: 90px; }
+  .featured .section-heading { margin-bottom: 10px; }
+
+  .featured .subtitle {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 24px;
+    color: #3a3a3a;
+    margin-bottom: 56px;
+  }
+
+  .media-cards {
+    display: flex;
+    gap: 63px;
+  }
+
+  .media-card { flex: 1; min-width: 0; }
+
+  .media-card img {
+    width: 100%;
+    height: 336px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 36px;
+  }
+
+  .media-card h4 {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 30px;
+    color: #000;
+    margin-bottom: 12px;
+  }
+
+  .media-card p {
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 24px;
+    color: #000;
+    margin-bottom: 28px;
+  }
+
+  .media-card .read-article {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 24px;
+    text-transform: uppercase;
+    color: var(--orange);
+    transition: color 0.1s ease-out;
+  }
+  .media-card .read-article:hover { color: #b95f0e; }
+
+  .view-more {
+    display: block;
+    text-align: center;
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 18px;
+    text-decoration: underline;
+    color: #000;
+    margin-top: 70px;
+  }
+
+  /* --- Gallery --- */
+
+  .gallery {
+    background: var(--gallery-bg);
+    padding: 94px 0 42px;
+  }
+
+  .gallery .section-heading {
+    color: #fff;
+    margin-bottom: 56px;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 315px;
+    gap: 39px 42px;
+    padding: 0 41px;
+  }
+
+  .tile { background: #fff; }
+  .tile.tall { grid-row: span 2; }
+  .tile.rounded { border-radius: 20px; }
+
+  .tile.peach {
+    background: var(--tile-peach);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Caveat", cursive;   /* stands in for Figma Hand */
+    font-size: 44px;
+    color: #000;
+  }
+
+  .tile.pink {
+    background: var(--tile-pink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Felipa", serif;
+    font-size: 48px;
+    letter-spacing: 2.4px;
+    color: #fff;
+  }
+
+  .tile.photo {
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* --- Where to next --- */
+
+  .where-next {
+    text-align: center;
+    padding: 110px 0 220px;
+  }
+
+  .where-next .section-heading { margin-bottom: 90px; }
+
+  .next-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 31px;
+  }
+
+  .next-buttons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 395px;
+    max-width: 42vw;
+    height: 119px;
+    background: var(--orange);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    transition: background 0.15s ease-out;
+  }
+  .next-buttons a:hover { background: #b95f0e; }
+</style>
+</head>
+<body>
+
+  <!-- ================= HEADER (same as home) ================= -->
+  <header class="site-header">
+
+    <a class="logo" href="index.html">
+      <img src="assets/logo.png" alt="Wonderland RV">
+    </a>
+
+    <div class="spacer"></div>
+
+    <nav class="main-nav">
+
+      <!-- RANGE + dropdown -->
+      <div class="nav-item">
+        <a class="nav-link" href="index.html">Range</a>
+        <div class="dropdown">
+          <div class="dropdown-panel dd-range">
+            <div class="range-cards">
+              <a class="range-card" href="#">
+                <div class="thumb"></div>
+                <h4>Solara</h4>
+                <p>Wonderland&rsquo;s first off-road, composite caravan, built tough without compromising on all of life&rsquo;s creature comforts</p>
+              </a>
+              <a class="range-card" href="#">
+                <div class="thumb"></div>
+                <h4>Xtr</h4>
+                <p>The ultimate self-sufficient off-grid caravan with full luxury features for the most extreme terrains and extended travel</p>
+              </a>
+              <a class="range-card" href="#">
+                <div class="thumb"></div>
+                <h4>Hornet</h4>
+                <p>Self-sufficient and tough enough to tackle harsh and rugged off-grid conditions for extended periods</p>
+              </a>
+              <a class="range-card" href="#">
+                <div class="thumb"></div>
+                <h4>Amaroo</h4>
+                <p>A lightweight and affordable full off-roader that balances toughness with luxury</p>
+              </a>
+            </div>
+            <div class="range-side">
+              <a class="explore" href="#"><h3>Explore the<br>full range</h3><span class="arrow">&rsaquo;</span></a>
+              <h3>Find your fit :</h3>
+              <a href="#"><h3>Family</h3></a>
+              <a href="#"><h3>Couples</h3></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BUY + dropdown -->
+      <div class="nav-item">
+        <a class="nav-link" href="#">Buy</a>
+        <div class="dropdown">
+          <div class="dropdown-panel dd-buy">
+            <div class="col">
+              <h3>Dealers</h3>
+              <p class="caption">Our Trusted Associates</p>
+              <ul class="dealer-list">
+                <li><a href="#">Melbourne</a></li>
+                <li><a href="#">Brisbane</a></li>
+                <li><a href="#">Mackay</a></li>
+                <li><a href="#">Sydney</a></li>
+                <li><a href="#">Tasmania</a></li>
+                <li><a href="#">Perth</a></li>
+              </ul>
+            </div>
+            <div class="col">
+              <h3>Insurance</h3>
+              <p class="caption">Let&rsquo;s Go Caravan Insurance</p>
+            </div>
+            <div class="col experience">
+              <a href="#"><h3>Wonderland<br>Experience &#10024;</h3></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENTS (no dropdown) -->
+      <div class="nav-item">
+        <a class="nav-link" href="#">Events</a>
+      </div>
+
+      <!-- ABOUT + dropdown -->
+      <div class="nav-item nav-item-about">
+        <a class="nav-link" href="#">About</a>
+        <div class="dropdown">
+          <div class="dropdown-panel dd-about">
+            <div class="about-links">
+              <a href="#"><h3>Meet the Team</h3></a>
+              <a href="#"><h3>Our Partners</h3></a>
+            </div>
+            <div class="col">
+              <h3>Wonderlanders</h3>
+              <div class="wonderlanders">
+                <ul class="dealer-list">
+                  <li><a href="#">Lost Tribe Adventures</a></li>
+                  <li><a href="#">Wheatland Wanderers</a></li>
+                  <li><a href="#">Livin in Sanity</a></li>
+                </ul>
+                <ul class="dealer-list">
+                  <li><a href="#">Few Laps Around the Sun</a></li>
+                  <li><a href="#">Sandy Van Travels</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MEDIA + dropdown -->
+      <div class="nav-item">
+        <a class="nav-link" href="#">Media</a>
+        <div class="dropdown">
+          <div class="dropdown-panel dd-media">
+            <a href="#"><h3>Blog</h3></a>
+            <a href="#"><h3>Media</h3></a>
+            <p class="caption">Featured Articles, Videos and Reviews</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT (no dropdown) -->
+      <div class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </div>
+
+    </nav>
+
+    <a class="search-btn" href="#" aria-label="Search">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <circle cx="9.5" cy="9.5" r="6.5" stroke="currentColor" stroke-width="2"/>
+        <line x1="14.7" y1="14.7" x2="20" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </a>
+
+    <a class="cta-btn" href="#">Build your Caravan</a>
+
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+
+    <!-- HERO IMAGE — drop assets/thankyou-hero.jpg in the folder,
+         delete the .image-label span and uncomment:
+    <img src="assets/thankyou-hero.jpg" alt="">
+    -->
+
+    <span class="image-label">IMAGE</span>
+
+    <div class="hero-copy">
+      <h1>Thank you for subscribing!</h1>
+      <p class="hero-sub">Exclusive offers, new features and more delivered straight to your inbox</p>
+    </div>
+
+  </section>
+
+  <!-- ================= REVIEWS ================= -->
+  <section class="reviews">
+    <h2 class="section-heading content-pad">What wonderlanders say about us?</h2>
+
+    <div class="review-band">
+      <button class="chevron prev" aria-label="Previous review">
+        <img src="assets/chevron-right.svg" alt="">
+      </button>
+
+      <div class="review-image">IMAGE</div>
+
+      <div class="review-quote">
+        <span class="qmark">&ldquo;</span>
+        <blockquote>What a company, fantastic family service awesome caravans&rdquo;</blockquote>
+        <div class="review-name">- Fabio Andrade</div>
+        <div class="review-role">Wonderlander</div>
+      </div>
+
+      <button class="chevron next" aria-label="Next review">
+        <img src="assets/chevron-right.svg" alt="">
+      </button>
+    </div>
+  </section>
+
+  <!-- ================= FEATURED MEDIA ================= -->
+  <section class="featured content-pad">
+    <h2 class="section-heading">Featured media</h2>
+    <p class="subtitle">Articles, Reviews and Videos.</p>
+
+    <div class="media-cards">
+      <div class="media-card">
+        <img src="assets/media-amaroo.jpg" alt="Amaroo 1806 on the road">
+        <h4>Caravan Review :&nbsp; Amaroo 1806 Couples&nbsp; Van</h4>
+        <p>Caravan World takes a closer look at the Amaroo 1806, Wonderland RV&rsquo;s aluminium-frame 18-footer that blends classic style with modern practicality in a compact, feature-packed design.</p>
+        <a class="read-article" href="#">Read Article</a>
+      </div>
+      <div class="media-card">
+        <img src="assets/media-xtr.png" alt="XTR 2211 at sunset">
+        <h4>XTR 2211 was judged the overall winner at the Caravan of the year 2024</h4>
+        <p>We&rsquo;re proud that the XTR 2211 has been announced as the winner in the 2024 Caravan of the Year awards.</p>
+        <a class="read-article" href="#">Read Article</a>
+      </div>
+    </div>
+
+    <a class="view-more" href="#">View more ...</a>
+  </section>
+
+  <!-- ================= GALLERY ================= -->
+  <section class="gallery">
+    <h2 class="section-heading content-pad">Gallery</h2>
+
+    <div class="gallery-grid">
+      <!-- column 1 -->
+      <div class="tile peach rounded">Our vision</div>
+      <!-- column 2 -->
+      <div class="tile tall"></div>
+      <!-- column 3 -->
+      <div class="tile photo" style="background-image:url('assets/gallery-field.jpg')"></div>
+      <!-- column 1 (tall) -->
+      <div class="tile tall"></div>
+      <!-- column 3 -->
+      <div class="tile"></div>
+      <!-- column 2 -->
+      <div class="tile"></div>
+      <!-- column 3 -->
+      <div class="tile pink rounded">Vision</div>
+    </div>
+  </section>
+
+  <!-- ================= WHERE TO NEXT ================= -->
+  <section class="where-next">
+    <h2 class="section-heading">Where to next ?</h2>
+    <div class="next-buttons">
+      <a href="index.html">Explore the range</a>
+      <a href="#">Meet the team</a>
+    </div>
+  </section>
+
+</body>
+</html>

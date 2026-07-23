@@ -1,0 +1,453 @@
+  /* ============================================================
+     WONDERLAND RV — Home page (top section)
+     Built from the Figma file "Wonderland"
+     Brand colors and type pulled straight from the design.
+     ============================================================ */
+
+  /* ---- Brand webfonts (served from assets/fonts/) ---- */
+
+  @font-face {
+    font-family: "Aviano Sans";
+    src: url("fonts/AvianoSans-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Aviano Sans";
+    src: url("fonts/AvianoSans-Black.woff2") format("woff2");
+    font-weight: 900;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Gordita";
+    src: url("fonts/Gordita-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Gordita";
+    src: url("fonts/Gordita-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Gordita";
+    src: url("fonts/Gordita-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Gordita";
+    src: url("fonts/Gordita-Light.woff2") format("woff2");
+    font-weight: 300;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Gordita";
+    src: url("fonts/Gordita-LightItalic.woff2") format("woff2");
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Gordita";
+    src: url("fonts/Gordita-Italic.woff2") format("woff2");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+
+
+  :root {
+    --orange:       #d57114;  /* brand orange (nav hover, CTA, active) */
+    --orange-light: #e88426;  /* "get a quote" orange */
+    --hero-grey:    #bbbbbb;  /* video placeholder background */
+    --tile-grey:    #d9d9d9;  /* image placeholder tiles */
+    --caption-grey: #464646;  /* small captions in dropdowns */
+
+    /* Brand fonts are embedded above as webfonts, so every visitor
+       sees the real Aviano Sans + Gordita. Fallbacks just in case. */
+    --font-display: "Aviano Sans", "Avenir Next", "Futura", sans-serif;
+    --font-body:    "Gordita", "Poppins", -apple-system, "Helvetica Neue", sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    background: #fff;
+  }
+
+  a { text-decoration: none; color: inherit; }
+
+  /* ============ HEADER ============ */
+
+  .site-header {
+    position: relative;          /* dropdowns anchor to items inside this */
+    display: flex;
+    align-items: center;
+    height: 139px;
+    background: #fff;
+    padding: 0 min(80px, 4vw) 0 min(164px, 8vw);
+    z-index: 10;
+  }
+
+  .logo img {
+    height: 60px;
+    width: auto;
+    display: block;
+  }
+
+  .site-header .spacer { flex: 1; }
+
+  /* --- Nav --- */
+
+  .main-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .nav-item { position: relative; }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    height: 36px;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #000;
+    cursor: pointer;
+    transition: color 0.1s ease-out;   /* the 0.1s dissolve from Figma */
+  }
+
+  /* THE hover interaction: text turns brand orange */
+  .nav-item:hover .nav-link { color: var(--orange); }
+
+  /* current page indicator (Home on this page) */
+  .nav-link.active { color: var(--orange); }
+
+  /* --- Search icon (recolorable vector, like the Figma component) --- */
+
+  .search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    margin: 0 28px 0 17px;
+    color: #000;
+    cursor: pointer;
+    transition: color 0.1s ease-out;
+  }
+  .search-btn:hover { color: var(--orange); }
+  .search-btn svg { display: block; }
+
+  /* --- CTA button --- */
+
+  .cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 242px;
+    height: 59px;
+    padding: 0 28px;
+    white-space: nowrap;
+    background: var(--orange);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: background 0.15s ease-out;
+  }
+  .cta-btn:hover { background: #b95f0e; }
+
+  /* ============ DROPDOWNS ============
+     Each dropdown lives INSIDE its .nav-item, so hovering the panel
+     still counts as hovering the item — the box stays open when you
+     move your cursor into it (the thing Figma made hard!).
+     The transparent padding-top bridges the gap between the nav text
+     and the panel so the hover never breaks on the way down. */
+
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    /* invisible hover bridge: spans from the nav item down to the header's
+       bottom edge, so the panel starts exactly at the header line — it
+       blends into the white header without covering the CTA button */
+    padding-top: calc((139px - 36px) / 2);
+    left: 0;
+    display: none;
+    z-index: 20;
+  }
+
+  .nav-item:hover .dropdown { display: block; }
+
+  .dropdown-panel {
+    background: #fff;
+    border-radius: 0 0 7px 7px;  /* only bottom corners rounded */
+    /* shadow casts downward only — no smudge on the white header above */
+    box-shadow: 0 30px 40px -18px rgba(0, 0, 0, 0.25);
+    animation: dropfade 0.15s ease-out;
+  }
+
+  @keyframes dropfade {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .dropdown h3 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #000;
+  }
+
+  .dropdown .caption {
+    font-size: 11px;
+    color: var(--caption-grey);
+  }
+
+  /* --- Range dropdown --- */
+
+  .dd-range {
+    display: flex;
+    gap: 40px;
+    width: 788px;
+    padding: 28px 32px;
+  }
+
+  .range-cards {
+    display: flex;
+    gap: 30px;
+  }
+
+  .range-card {
+    width: 105px;
+    color: #000;
+    transition: color 0.1s ease-out;
+  }
+  .range-card:hover { color: var(--orange); }   /* like Solara in the design */
+
+  .range-card .thumb {
+    width: 105px;
+    height: 105px;
+    background: var(--tile-grey);
+    margin-bottom: 12px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .range-card h4 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+
+  .range-card p {
+    font-size: 11px;
+    line-height: 14px;
+  }
+
+  .range-side {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 10px;
+    white-space: nowrap;
+  }
+
+  .range-side .explore {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+  .range-side .explore:hover h3 { color: var(--orange); }
+  .range-side .explore .arrow { color: var(--orange); font-weight: bold; font-size: 18px; }
+
+  .range-side a h3 { transition: color 0.1s ease-out; }
+  .range-side a:hover h3 { color: var(--orange); }
+
+  /* --- Buy dropdown --- */
+
+  .dd-buy {
+    display: flex;
+    gap: 48px;
+    width: 588px;
+    padding: 24px 34px 30px;
+  }
+
+  .dd-buy .col h3 { margin-bottom: 4px; }
+  .dd-buy .col .caption { margin-bottom: 18px; }
+
+  .dealer-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dealer-list a {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    transition: color 0.1s ease-out;
+  }
+  .dealer-list a:hover { color: var(--orange); }
+
+  .dealer-list a::before {
+    content: "";
+    width: 8px;
+    height: 1px;
+    background: var(--orange);
+  }
+
+  .dd-buy .experience { white-space: nowrap; }
+  .dd-buy a h3:hover { color: var(--orange); }
+
+  /* --- Media dropdown --- */
+
+  .dd-media {
+    width: 251px;
+    padding: 24px 28px 28px;
+  }
+
+  .dd-media a { display: block; margin-bottom: 12px; }
+  .dd-media a h3 { transition: color 0.1s ease-out; }
+  .dd-media a:hover h3 { color: var(--orange); }
+
+  /* --- About dropdown --- */
+
+  .dd-about {
+    display: flex;
+    gap: 64px;
+    width: 780px;
+    padding: 32px 44px 40px;
+  }
+
+  .dd-about .about-links {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    white-space: nowrap;
+  }
+  .dd-about .about-links a h3 { transition: color 0.1s ease-out; }
+  .dd-about .about-links a:hover h3 { color: var(--orange); }
+
+  .dd-about .wonderlanders {
+    display: flex;
+    gap: 48px;
+    margin-top: 20px;
+  }
+  .dd-about .dealer-list { gap: 16px; white-space: nowrap; }
+
+  /* About sits near the right edge — pull its panel left so it fits on screen */
+  .nav-item-about .dropdown { left: auto; right: -300px; }
+
+  /* ============ HERO ============ */
+
+  .hero {
+    position: relative;
+    height: calc(100vh - 139px);
+    min-height: 560px;
+    background: var(--hero-grey);
+    overflow: hidden;
+  }
+
+  /* When you add a real video/image, it fills the hero behind the text */
+  .hero video,
+  .hero > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* YouTube background embed: oversized + centered so it covers the
+     hero like object-fit:cover, with no black bars. pointer-events:none
+     keeps it purely decorative (clicks pass through to the page). */
+  .hero .yt-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: max(100vw, calc((100vh - 139px) * 1.7778));
+    height: max(56.25vw, calc(100vh - 139px));
+    border: 0;
+    pointer-events: none;
+  }
+
+  .hero .video-label {
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Inter", var(--font-body);
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: #fff;
+  }
+
+  .hero-copy {
+    position: absolute;
+    left: min(179px, 9vw);
+    bottom: 12%;
+  }
+
+  .hero-copy h1 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 38px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #fff;
+    margin-bottom: 15px;
+  }
+
+  .hero-copy .quote-link {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--orange-light);
+    transition: color 0.1s ease-out;
+  }
+  .hero-copy .quote-link:hover { color: #fff; }
+
+  /* keep the wide Range panel on-screen on smaller windows */
+  @media (max-width: 1500px) {
+    .dd-range { flex-wrap: wrap; width: min(788px, 62vw); }
+  }
+
+  /* compress the header on smaller windows (design is 1728px wide) */
+  @media (max-width: 1440px) {
+    .site-header { padding: 0 24px; }
+    .logo img { height: 44px; }
+    .main-nav { gap: 0; }
+    .nav-link { padding: 0 11px; font-size: 12px; }
+    .search-btn { margin: 0 14px 0 8px; }
+    .cta-btn { min-width: 0; padding: 0 18px; height: 48px; }
+  }
