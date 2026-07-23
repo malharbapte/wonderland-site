@@ -84,7 +84,7 @@
   .review-quote {
     position: absolute;
     left: 53.5%;
-    top: calc(50% + 40px);
+    top: calc(50% + 5px);   /* Figma: quote block essentially centered in the band */
     transform: translateY(-50%);
     width: 458px;
     max-width: 40%;
@@ -95,9 +95,12 @@
      LEFT of the quote's first line; quote + credits share one 458px column */
   .review-quote .qmark {
     position: absolute;
-    left: -4px;                    /* right edge of the mark meets the text's left edge */
+    left: 6px;                     /* ink's right edge just past the text's left edge */
     transform: translateX(-100%);
-    top: 107px;                    /* hand-tuned vertical position */
+    /* NOTE: the glyph's visible ink renders ~33px ABOVE this box (line-height 0.4
+       quirk). top:6px puts the ink from 27px above to 5px below the first line's
+       top — matching the Figma screenshot. Do not judge this value by the box. */
+    top: 6px;
     font-family: var(--font-body);
     font-style: italic;
     font-size: 128px;
