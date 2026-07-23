@@ -250,23 +250,27 @@
 
   .tile.peach {
     background: var(--tile-peach);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: "Caveat", cursive;   /* stands in for Figma Hand */
-    font-size: 44px;
+    padding: 14px;                    /* 14px inset from all sides */
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
     color: #000;
   }
 
   .tile.pink {
-    background: var(--tile-peach);   /* faint orange, matching "Our vision" */
+    background: var(--tile-peach);
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-family: "Felipa", serif;
-    font-size: 48px;
-    letter-spacing: 2.4px;
-    color: #000;                     /* white was illegible on the faint orange */
+    padding: 36px;
+    text-align: left;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--gallery-bg);         /* same as the section background */
   }
 
   .tile.photo {
@@ -517,7 +521,7 @@
     <div class="gallery-grid">
       <!-- images below are from the blog page: wonderlandrv.com.au/blog/ -->
       <!-- column 1 -->
-      <div class="tile peach rounded">Our vision</div>
+      <div class="tile peach rounded">Caravanning Reimagined</div>
       <!-- column 2 -->
       <div class="tile tall photo" style="background-image:url('assets/gallery-1.webp')"></div>
       <!-- column 3 -->
@@ -529,7 +533,7 @@
       <!-- column 2 -->
       <div class="tile photo" style="background-image:url('assets/gallery-4.webp')"></div>
       <!-- column 3 -->
-      <div class="tile pink rounded"></div>
+      <div class="tile pink rounded">We&rsquo;re all about igniting the spirit of adventure and inspiring people to embark on life-changing journeys in the most breathtaking corners of the country.</div>
     </div>
   </section>
 
