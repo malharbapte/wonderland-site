@@ -97,15 +97,16 @@
     font-size: 77px;
     line-height: 0.4;
     display: block;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
 
   .review-quote blockquote {
     font-family: var(--font-body);
     font-style: italic;
     font-size: 14px;
-    line-height: 15px;
-    margin-bottom: 28px;
+    line-height: 19px;
+    margin-left: 56px;      /* indented off the quote mark, per reference */
+    margin-bottom: 40px;
   }
 
   .review-quote .review-name {
@@ -242,14 +243,14 @@
   }
 
   .tile.pink {
-    background: var(--tile-pink);
+    background: var(--tile-peach);   /* faint orange, matching "Our vision" */
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: "Felipa", serif;
     font-size: 48px;
     letter-spacing: 2.4px;
-    color: #fff;
+    color: #000;                     /* white was illegible on the faint orange */
   }
 
   .tile.photo {
