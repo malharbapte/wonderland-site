@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonderland RV</title>
+<style>
+  /* ============================================================
+     WONDERLAND RV — Home page (top section)
+     Built from the Figma file "Wonderland"
+     Brand colors and type pulled straight from the design.
+     ============================================================ */
+
+  :root {
+    --orange:       #d57114;  /* brand orange (nav hover, CTA, active) */
+    --orange-light: #e88426;  /* "get a quote" orange */
+    --hero-grey:    #bbbbbb;  /* video placeholder background */
+    --tile-grey:    #d9d9d9;  /* image placeholder tiles */
+    --caption-grey: #464646;  /* small captions in dropdowns */
+
+    /* Aviano Sans is installed on your Mac, so it renders correctly
+       for you. Visitors without it fall back to a similar wide sans. */
+    --font-display: "Aviano Sans", "Avenir Next", "Futura", sans-serif;
+    --font-body:    "Gordita", "Poppins", -apple-system, "Helvetica Neue", sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    background: #fff;
+  }
+
+  a { text-decoration: none; color: inherit; }
+
+  /* ============ HEADER ============ */
+
+  .site-header {
+    position: relative;          /* dropdowns anchor to items inside this */
+    display: flex;
+    align-items: center;
+    height: 139px;
+    background: #fff;
+    padding: 0 min(80px, 4vw) 0 min(164px, 8vw);
+    z-index: 10;
+  }
+
+  .logo img {
+    height: 60px;
+    width: auto;
+    display: block;
+  }
+
+  .site-header .spacer { flex: 1; }
+
+  /* --- Nav --- */
+
+  .main-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-item { position: relative; }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 86px;
+    height: 36px;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #000;
+    cursor: pointer;
+    transition: color 0.1s ease-out;   /* the 0.1s dissolve from Figma */
+  }
+
+  /* THE hover interaction: text turns brand orange */
+  .nav-item:hover .nav-link { color: var(--orange); }
+
+  /* --- Search icon (recolorable vector, like the Figma component) --- */
+
+  .search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    margin: 0 28px 0 17px;
+    color: #000;
+    cursor: pointer;
+    transition: color 0.1s ease-out;
+  }
+  .search-btn:hover { color: var(--orange); }
+  .search-btn svg { display: block; }
+
+  /* --- CTA button --- */
+
+  .cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 242px;
+    height: 59px;
+    padding: 0 28px;
+    white-space: nowrap;
+    background: var(--orange);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: background 0.15s ease-out;
+  }
+  .cta-btn:hover { background: #b95f0e; }
+
+  /* ============ DROPDOWNS ============
+     Each dropdown lives INSIDE its .nav-item, so hovering the panel
+     still counts as hovering the item — the box stays open when you
+     move your cursor into it (the thing Figma made hard!).
+     The transparent padding-top bridges the gap between the nav text
+     and the panel so the hover never breaks on the way down. */
+
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding-top: 27px;           /* invisible hover bridge */
+    display: none;
+    z-index: 20;
+  }
+
+  .nav-item:hover .dropdown { display: block; }
+
+  .dropdown-panel {
+    background: #fff;
+    border-radius: 7px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+    animation: dropfade 0.15s ease-out;
+  }
+
+  @keyframes dropfade {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .dropdown h3 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #000;
+  }
+
+  .dropdown .caption {
+    font-size: 11px;
+    color: var(--caption-grey);
+  }
+
+  /* --- Range dropdown --- */
+
+  .dd-range {
+    display: flex;
+    gap: 40px;
+    width: 788px;
+    padding: 28px 32px;
+  }
+
+  .range-cards {
+    display: flex;
+    gap: 30px;
+  }
+
+  .range-card {
+    width: 105px;
+    color: #000;
+    transition: color 0.1s ease-out;
+  }
+  .range-card:hover { color: var(--orange); }   /* like Solara in the design */
+
+  .range-card .thumb {
+    width: 105px;
+    height: 105px;
+    background: var(--tile-grey);
+    margin-bottom: 12px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .range-card h4 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+
+  .range-card p {
+    font-size: 11px;
+    line-height: 14px;
+  }
+
+  .range-side {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 10px;
+    white-space: nowrap;
+  }
+
+  .range-side .explore {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+  .range-side .explore:hover h3 { color: var(--orange); }
+  .range-side .explore .arrow { color: var(--orange); font-weight: bold; font-size: 18px; }
+
+  .range-side a h3 { transition: color 0.1s ease-out; }
+  .range-side a:hover h3 { color: var(--orange); }
+
+  /* --- Buy dropdown --- */
+
+  .dd-buy {
+    display: flex;
+    gap: 48px;
+    width: 588px;
+    padding: 24px 34px 30px;
+  }
+
+  .dd-buy .col h3 { margin-bottom: 4px; }
+  .dd-buy .col .caption { margin-bottom: 18px; }
+
+  .dealer-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dealer-list a {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    transition: color 0.1s ease-out;
+  }
+  .dealer-list a:hover { color: var(--orange); }
+
+  .dealer-list a::before {
+    content: "";
+    width: 8px;
+    height: 1px;
+    background: var(--orange);
+  }
+
+  .dd-buy .experience { white-space: nowrap; }
+  .dd-buy a h3:hover { color: var(--orange); }
+
+  /* --- Media dropdown --- */
+
+  .dd-media {
+    width: 251px;
+    padding: 24px 28px 28px;
+  }
+
+  .dd-media a { display: block; margin-bottom: 12px; }
+  .dd-media a h3 { transition: color 0.1s ease-out; }
+  .dd-media a:hover h3 { color: var(--orange); }
+
+  /* --- About dropdown (placeholder — no design in Figma yet) --- */
+
+  .dd-about {
+    width: 251px;
+    padding: 24px 28px 28px;
+  }
+  .dd-about a { display: block; margin-bottom: 12px; }
+  .dd-about a h3 { transition: color 0.1s ease-out; }
+  .dd-about a:hover h3 { color: var(--orange); }
+
+  /* ============ HERO ============ */
+
+  .hero {
+    position: relative;
+    height: calc(100vh - 139px);
+    min-height: 560px;
+    background: var(--hero-grey);
+    overflow: hidden;
+  }
+
+  /* When you add a real video/image, it fills the hero behind the text */
+  .hero video,
+  .hero > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero .video-label {
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Inter", var(--font-body);
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: #fff;
+  }
+
+  .hero-copy {
+    position: absolute;
+    left: min(179px, 9vw);
+    bottom: 12%;
+  }
+
+  .hero-copy h1 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 38px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #fff;
+    margin-bottom: 30px;
+  }
+
+  .hero-copy .quote-link {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--orange-light);
+    transition: color 0.1s ease-out;
+  }
+  .hero-copy .quote-link:hover { color: #fff; }
+
+  /* keep the wide Range panel on-screen on smaller windows */
+  @media (max-width: 1500px) {
+    .dd-range { flex-wrap: wrap; width: min(788px, 62vw); }
+  }
+
+  /* compress the header on smaller windows (design is 1728px wide) */
+  @media (max-width: 1440px) {
+    .site-header { padding: 0 24px; }
+    .logo img { height: 44px; }
+    .main-nav { gap: 0; }
+    .nav-link { width: auto; padding: 0 13px; }
+    .search-btn { margin: 0 14px 0 8px; }
+    .cta-btn { min-width: 0; padding: 0 18px; height: 48px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+
+    <a class="logo" href="#">
+      <img src="assets/logo.png" alt="Wonderland RV">
+    </a>
+
+    <div class="spacer"></div>
+
+    <nav class="main-nav">
+
+      <!-- RANGE + dropdown -->
+      <div class="nav-item">
+        <a class="nav-link" href="#">Range</a>
+        <div class="dropdown">
+          <div class="dropdown-panel dd-range">
+            <div class="range-cards">
+              <a class="range-card" href="#">
+                <!-- To use a real photo: drop assets/solara.jpg in the folder and
+                     change the div below to  style="background-image:url('assets/solara.jpg')" -->
+                <div class="thumb"></div>
+                <h4>Solara</h4>
+                <p>Wonderland&rsquo;s first off-road, composite caravan, built tough without compromising on all of life&rsquo;s creature comforts</p>
+              </a>
+              <a class="range-card" href="#">
+                <div class="thumb"></div>
+                <h4>Xtr</h4>
+                <p>The ultimate self-sufficient off-grid caravan with full luxury features for the most extreme terrains and extended travel</p>
+              </a>
+              <a class="range-card" href="#">
+                <div class="thumb"></div>
+                <h4>Hornet</h4>
+                <p>Self-sufficient and tough enough to tackle harsh and rugged off-grid conditions for extended periods</p>
+              </a>
+              <a class="range-card" href="#">
+                <div class="thumb"></div>
+                <h4>Amaroo</h4>
+                <p>A lightweight and affordable full off-roader that balances toughness with luxury</p>
+              </a>
+            </div>
+            <div class="range-side">
+              <a class="explore" href="#"><h3>Explore the<br>full range</h3><span class="arrow">&rsaquo;</span></a>
+              <h3>Find your fit :</h3>
+              <a href="#"><h3>Family</h3></a>
+              <a href="#"><h3>Couples</h3></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BUY + dropdown -->
+      <div class="nav-item">
+        <a class="nav-link" href="#">Buy</a>
+        <div class="dropdown">
+          <div class="dropdown-panel dd-buy">
+            <div class="col">
+              <h3>Dealers</h3>
+              <p class="caption">Our Trusted Associates</p>
+              <ul class="dealer-list">
+                <li><a href="#">Melbourne</a></li>
+                <li><a href="#">Brisbane</a></li>
+                <li><a href="#">Mackay</a></li>
+                <li><a href="#">Sydney</a></li>
+                <li><a href="#">Tasmania</a></li>
+                <li><a href="#">Perth</a></li>
+              </ul>
+            </div>
+            <div class="col">
+              <h3>Insurance</h3>
+              <p class="caption">Let&rsquo;s Go Caravan Insurance</p>
+            </div>
+            <div class="col experience">
+              <a href="#"><h3>Wonderland<br>Experience &#10024;</h3></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENTS (no dropdown) -->
+      <div class="nav-item">
+        <a class="nav-link" href="#">Events</a>
+      </div>
+
+      <!-- ABOUT + dropdown (placeholder content — not designed in Figma yet) -->
+      <div class="nav-item">
+        <a class="nav-link" href="#">About</a>
+        <div class="dropdown">
+          <div class="dropdown-panel dd-about">
+            <a href="#"><h3>Our Story</h3></a>
+            <a href="#"><h3>Why Wonderland</h3></a>
+            <p class="caption">Placeholder &mdash; design this dialog in Figma and I&rsquo;ll match it</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- MEDIA + dropdown -->
+      <div class="nav-item">
+        <a class="nav-link" href="#">Media</a>
+        <div class="dropdown">
+          <div class="dropdown-panel dd-media">
+            <a href="#"><h3>Blog</h3></a>
+            <a href="#"><h3>Media</h3></a>
+            <p class="caption">Featured Articles, Videos and Reviews</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT (no dropdown) -->
+      <div class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </div>
+
+    </nav>
+
+    <!-- Search icon: inline vector so it recolors on hover -->
+    <a class="search-btn" href="#" aria-label="Search">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <circle cx="9.5" cy="9.5" r="6.5" stroke="currentColor" stroke-width="2"/>
+        <line x1="14.7" y1="14.7" x2="20" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </a>
+
+    <a class="cta-btn" href="#">Build your Caravan</a>
+
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+
+    <!-- HERO VIDEO GOES HERE.
+         When you have your video file, drop it in the assets folder
+         (e.g. assets/hero.mp4), then delete the .video-label span and
+         uncomment this:
+
+    <video autoplay muted loop playsinline>
+      <source src="assets/hero.mp4" type="video/mp4">
+    </video>
+
+         Or for an image instead:
+    <img src="assets/hero.jpg" alt="">
+    -->
+
+    <span class="video-label">VIDEO</span>
+
+    <div class="hero-copy">
+      <h1>ADventure<br>your way</h1>
+      <a class="quote-link" href="#">get a quote</a>
+    </div>
+
+  </section>
+
+</body>
+</html>
