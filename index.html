@@ -343,6 +343,20 @@
     object-fit: cover;
   }
 
+  /* YouTube background embed: oversized + centered so it covers the
+     hero like object-fit:cover, with no black bars. pointer-events:none
+     keeps it purely decorative (clicks pass through to the page). */
+  .hero .yt-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: max(100vw, calc((100vh - 139px) * 1.7778));
+    height: max(56.25vw, calc(100vh - 139px));
+    border: 0;
+    pointer-events: none;
+  }
+
   .hero .video-label {
     position: absolute;
     top: 43%;
@@ -530,20 +544,21 @@
   <!-- ================= HERO ================= -->
   <section class="hero">
 
-    <!-- HERO VIDEO GOES HERE.
-         When you have your video file, drop it in the assets folder
-         (e.g. assets/hero.mp4), then delete the .video-label span and
-         uncomment this:
+    <!-- HERO VIDEO — currently a YouTube background embed.
+         If you get the original video file, drop it in assets/
+         (e.g. assets/hero.mp4), delete the <iframe> below and
+         uncomment this instead (crisper, no YouTube branding):
 
     <video autoplay muted loop playsinline>
       <source src="assets/hero.mp4" type="video/mp4">
     </video>
-
-         Or for an image instead:
-    <img src="assets/hero.jpg" alt="">
     -->
 
-    <span class="video-label">VIDEO</span>
+    <iframe class="yt-bg"
+      src="https://www.youtube-nocookie.com/embed/x0NoTZonq8Q?autoplay=1&mute=1&loop=1&playlist=x0NoTZonq8Q&controls=0&rel=0&playsinline=1&modestbranding=1"
+      title="Wonderland RV"
+      allow="autoplay; encrypted-media"
+      allowfullscreen></iframe>
 
     <div class="hero-copy">
       <h1>ADventure<br>your way</h1>
