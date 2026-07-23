@@ -250,11 +250,14 @@
 
   .tile.peach {
     background: var(--tile-peach);
-    padding: 14px;                    /* 14px inset from all sides */
+    display: flex;
+    align-items: center;              /* vertically centered, like the reference box */
+    padding: 14px 14px 14px 15%;      /* left inset matches the reference position */
     text-align: left;
     font-family: var(--font-display);
     font-weight: 900;
-    font-size: 18px;
+    font-size: 36px;
+    line-height: 1.2;
     text-transform: uppercase;
     letter-spacing: 0.04em;
     color: #000;
@@ -268,8 +271,8 @@
     text-align: left;
     font-family: var(--font-body);
     font-style: italic;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 18px;
+    line-height: 26px;
     color: var(--gallery-bg);         /* same as the section background */
   }
 
@@ -521,7 +524,7 @@
     <div class="gallery-grid">
       <!-- images below are from the blog page: wonderlandrv.com.au/blog/ -->
       <!-- column 1 -->
-      <div class="tile peach rounded">Caravanning Reimagined</div>
+      <div class="tile peach rounded">Caravanning<br>Reimagined</div>
       <!-- column 2 -->
       <div class="tile tall photo" style="background-image:url('assets/gallery-1.webp')"></div>
       <!-- column 3 -->
