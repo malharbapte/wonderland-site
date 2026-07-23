@@ -629,3 +629,73 @@
 
   /* "Find your fit :" label in the Range dropdown */
   .range-side .fit-label { color: #696969; }
+
+  /* ============ MOBILE (<= 820px) ============ */
+
+  .nav-toggle { display: none; }
+  .burger { display: none; }
+
+  @media (max-width: 820px) {
+    .site-header { height: 76px; padding: 0 16px; }
+    .logo img { height: 32px; }
+
+    /* nav collapses into a hamburger flyout; the hover mega-menus
+       are desktop-only (hover doesn't exist on touch) */
+    .main-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 8px 0 16px;
+      box-shadow: 0 24px 32px -16px rgba(0, 0, 0, 0.25);
+      z-index: 40;
+    }
+    .nav-toggle:checked ~ .main-nav { display: flex; }
+    .nav-item { width: 100%; }
+    .nav-link {
+      width: 100%;
+      justify-content: flex-start;
+      padding: 0 24px;
+      height: 48px;
+      font-size: 14px;
+    }
+    .dropdown { display: none !important; }
+    .search-btn { display: none; }
+
+    .cta-btn { min-width: 0; padding: 0 12px; height: 40px; font-size: 10px; }
+
+    .burger {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    .burger span { display: block; width: 22px; height: 2px; background: #000; }
+
+    .hero { height: calc(100vh - 76px); min-height: 420px; }
+    .hero .yt-bg {
+      width: max(100vw, calc((100vh - 76px) * 1.7778));
+      height: max(56.25vw, calc(100vh - 76px));
+    }
+    .hero-copy { bottom: 9%; }
+    .hero-copy h1 { font-size: 32px; line-height: 28px; }
+    .hero-copy .quote-link { font-size: 18px; }
+
+    .site-footer { padding: 60px 24px 40px; }
+    .footer-left { width: 100%; }
+    .footer-cols { grid-template-columns: 1fr 1fr; row-gap: 40px; }
+    .footer-col-locations { grid-row: auto; }
+    .newsletter { margin-bottom: 48px; }
+    .newsletter form { flex-direction: column; align-items: stretch; gap: 14px; }
+    .footer-bottom { margin-top: 60px; }
+  }
