@@ -91,14 +91,16 @@
     color: #fff;
   }
 
-  /* Quote text exactly per the Figma design (48->28 reduction not applied here) */
+  /* Quote text exactly per the Figma design: the quote mark hangs to the
+     LEFT of the quote's first line; quote + credits share one 458px column */
   .review-quote .qmark {
+    position: absolute;
+    left: -84px;
+    top: -22px;
     font-family: var(--font-body);
     font-style: italic;
     font-size: 128px;
     line-height: 0.4;
-    display: block;
-    margin-bottom: 18px;
   }
 
   .review-quote blockquote {
@@ -106,8 +108,7 @@
     font-style: italic;
     font-size: 24px;
     line-height: 24px;
-    margin-left: 56px;      /* indented off the quote mark, per reference */
-    margin-bottom: 44px;
+    margin-bottom: 32px;
   }
 
   .review-quote .review-name {
