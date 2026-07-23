@@ -107,27 +107,36 @@
     line-height: 0.4;
   }
 
+  /* relative top offset moves the text down without touching the
+     absolutely-positioned quotation mark or the block's centering */
+  .review-quote blockquote,
+  .review-quote .review-name,
+  .review-quote .review-role {
+    position: relative;
+    top: 20px;
+  }
+
   .review-quote blockquote {
     font-family: var(--font-body);
     font-style: italic;
-    font-size: 19px;
-    line-height: 19px;
+    font-size: 24px;
+    line-height: 24px;
     margin-bottom: 32px;
   }
 
   .review-quote .review-name {
     font-family: var(--font-body);
     font-weight: 500;
-    font-size: 19px;
-    line-height: 19px;
+    font-size: 24px;
+    line-height: 24px;
     text-align: right;
   }
 
   .review-quote .review-role {
     font-family: var(--font-body);
     font-weight: 300;
-    font-size: 14px;
-    line-height: 19px;
+    font-size: 18px;
+    line-height: 24px;
     text-align: right;
   }
 
