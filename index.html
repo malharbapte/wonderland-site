@@ -11,6 +11,39 @@
      Brand colors and type pulled straight from the design.
      ============================================================ */
 
+  /* ---- Brand webfonts (served from assets/fonts/) ---- */
+
+  @font-face {
+    font-family: "Aviano Sans";
+    src: url("assets/fonts/AvianoSans-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Aviano Sans";
+    src: url("assets/fonts/AvianoSans-Black.woff2") format("woff2");
+    font-weight: 900;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Gordita";
+    src: url("assets/fonts/Gordita-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Gordita";
+    src: url("assets/fonts/Gordita-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Gordita";
+    src: url("assets/fonts/Gordita-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-display: swap;
+  }
+
   :root {
     --orange:       #d57114;  /* brand orange (nav hover, CTA, active) */
     --orange-light: #e88426;  /* "get a quote" orange */
@@ -18,8 +51,8 @@
     --tile-grey:    #d9d9d9;  /* image placeholder tiles */
     --caption-grey: #464646;  /* small captions in dropdowns */
 
-    /* Aviano Sans is installed on your Mac, so it renders correctly
-       for you. Visitors without it fall back to a similar wide sans. */
+    /* Brand fonts are embedded above as webfonts, so every visitor
+       sees the real Aviano Sans + Gordita. Fallbacks just in case. */
     --font-display: "Aviano Sans", "Avenir Next", "Futura", sans-serif;
     --font-body:    "Gordita", "Poppins", -apple-system, "Helvetica Neue", sans-serif;
   }
