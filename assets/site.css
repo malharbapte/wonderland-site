@@ -625,3 +625,6 @@
     .footer-main { flex-direction: column; gap: 60px; }
     .footer-bottom { flex-direction: column; align-items: flex-start; }
   }
+
+  /* "Find your fit :" label in the Range dropdown */
+  .range-side .fit-label { color: #696969; }
