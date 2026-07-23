@@ -340,7 +340,8 @@
   .dd-about {
     display: flex;
     gap: 64px;
-    width: 780px;
+    width: max-content;      /* panel adapts to its text */
+    max-width: min(920px, 92vw);
     padding: 32px 44px 40px;
   }
 
