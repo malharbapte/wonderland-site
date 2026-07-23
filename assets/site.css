@@ -451,3 +451,177 @@
     .search-btn { margin: 0 14px 0 8px; }
     .cta-btn { min-width: 0; padding: 0 18px; height: 48px; }
   }
+
+  /* ============ FOOTER (from wonderlandrv.com.au) ============ */
+
+  .site-footer {
+    background: #fff;
+    font-family: var(--font-body);
+    padding: 100px min(170px, 9vw) 60px;
+  }
+
+  .footer-main {
+    display: flex;
+    gap: 90px;
+    align-items: flex-start;
+  }
+
+  .footer-left {
+    width: 290px;
+    flex-shrink: 0;
+  }
+
+  .footer-left .footer-logo {
+    height: 34px;
+    width: auto;
+    display: block;
+    margin-bottom: 28px;
+  }
+
+  .footer-left .blurb {
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .footer-left .find-out {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #111;
+    display: inline-block;
+    margin-bottom: 34px;
+  }
+  .footer-left .find-out:hover { color: var(--orange); }
+
+  .f-heading {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--orange);
+    margin-bottom: 14px;
+  }
+
+  .footer-left .contact-line {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: #111;
+    margin-bottom: 8px;
+  }
+  a.contact-line:hover { color: var(--orange); }
+
+  .footer-left .socials {
+    display: flex;
+    gap: 26px;
+    margin: 26px 0 40px;
+  }
+  .footer-left .socials img {
+    height: 17px;
+    width: 17px;
+    display: block;
+    opacity: 0.85;
+    transition: opacity 0.1s ease-out;
+  }
+  .footer-left .socials a:hover img { opacity: 0.45; }
+
+  .footer-left .badge {
+    height: 34px;
+    width: auto;
+    display: block;
+  }
+
+  .footer-right { flex: 1; min-width: 0; }
+
+  .newsletter { margin-bottom: 64px; }
+
+  .newsletter form {
+    display: flex;
+    gap: 18px;
+    max-width: 640px;
+  }
+
+  .newsletter input {
+    flex: 1;
+    border: 0;
+    border-bottom: 1px solid #333;
+    font-family: var(--font-body);
+    font-size: 13px;
+    padding: 10px 2px;
+    outline: none;
+    background: transparent;
+  }
+  .newsletter input:focus { border-bottom-color: var(--orange); }
+
+  .newsletter button {
+    border: 0;
+    background: var(--orange);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 12px 26px;
+    cursor: pointer;
+    transition: background 0.15s ease-out;
+  }
+  .newsletter button:hover { background: #b95f0e; }
+
+  .footer-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 56px;
+    column-gap: 40px;
+  }
+
+  .footer-cols ul {
+    list-style: none;
+  }
+
+  .footer-cols li { margin-bottom: 12px; }
+
+  .footer-cols a {
+    font-size: 13px;
+    color: #222;
+    transition: color 0.1s ease-out;
+  }
+  .footer-cols a:hover { color: var(--orange); }
+
+  .footer-col-locations { grid-row: span 2; }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 60px;
+    margin-top: 90px;
+  }
+
+  .footer-bottom .legal a {
+    display: block;
+    font-size: 12px;
+    color: #222;
+    margin-bottom: 8px;
+  }
+  .footer-bottom .legal a:hover { color: var(--orange); }
+
+  .footer-bottom .legal p {
+    font-size: 12px;
+    color: #222;
+    margin-top: 14px;
+  }
+
+  .footer-bottom .disclaimer {
+    font-size: 11px;
+    line-height: 1.8;
+    color: #555;
+    max-width: 640px;
+  }
+
+  @media (max-width: 1100px) {
+    .footer-main { flex-direction: column; gap: 60px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+  }
