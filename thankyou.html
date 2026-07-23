@@ -77,15 +77,8 @@
     bottom: 0;
     left: 13.2%;
     width: 27.3%;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: "Inter", var(--font-body);
-    font-weight: 300;
-    font-size: 14px;
-    letter-spacing: 0.2em;
-    color: #000;
+    /* Sandy Van Travels (wonderlandrv.com.au/about/ambassadors/sandy-van-travels/) */
+    background: #fff url("assets/review-sandy.jpg") center / cover no-repeat;
   }
 
   .review-quote {
@@ -462,7 +455,7 @@
         <img src="assets/chevron-right.svg" alt="">
       </button>
 
-      <div class="review-image">IMAGE</div>
+      <div class="review-image" role="img" aria-label="Sandy Van Travels with their Wonderland RV"></div>
 
       <div class="review-quote">
         <span class="qmark">&ldquo;</span>
@@ -505,18 +498,19 @@
     <h2 class="section-heading content-pad">Gallery</h2>
 
     <div class="gallery-grid">
+      <!-- images below are from the blog page: wonderlandrv.com.au/blog/ -->
       <!-- column 1 -->
       <div class="tile peach rounded">Our vision</div>
       <!-- column 2 -->
-      <div class="tile tall"></div>
+      <div class="tile tall photo" style="background-image:url('assets/gallery-1.webp')"></div>
       <!-- column 3 -->
       <div class="tile photo" style="background-image:url('assets/gallery-field.jpg')"></div>
       <!-- column 1 (tall) -->
-      <div class="tile tall"></div>
+      <div class="tile tall photo" style="background-image:url('assets/gallery-2.webp')"></div>
       <!-- column 3 -->
-      <div class="tile"></div>
+      <div class="tile photo" style="background-image:url('assets/gallery-3.webp')"></div>
       <!-- column 2 -->
-      <div class="tile"></div>
+      <div class="tile photo" style="background-image:url('assets/gallery-4.webp')"></div>
       <!-- column 3 -->
       <div class="tile pink rounded">Vision</div>
     </div>
