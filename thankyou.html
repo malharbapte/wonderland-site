@@ -103,7 +103,8 @@
     top: 6px;
     font-family: var(--font-body);
     font-style: italic;
-    font-size: 128px;
+    /* fluid: 128px at the 1728px design width, scaling with the window */
+    font-size: clamp(80px, 7.4vw, 128px);
     line-height: 0.4;
   }
 
@@ -343,7 +344,8 @@
     .review-quote .qmark {
       position: static;
       transform: none;
-      font-size: 64px;
+      /* fluid on phones too: ~12vw, between 44px and 72px */
+      font-size: clamp(44px, 12vw, 72px);
       line-height: 1;
       margin-bottom: 4px;
     }
